@@ -29,8 +29,14 @@ const createFormPerson = (i) => {
     required: 'true',
   });
 
+  const button = createElement('button', {
+    className: 'btn-confirm',
+    type: 'submit',
+    textContent: 'Подтвердить',
+  })
+
   fieldName.append(labelName, inputName)
-  form.append(title, fieldName)
+  form.append(title, fieldName, button)
 
   return form;
 };
