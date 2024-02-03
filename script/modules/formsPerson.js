@@ -2,8 +2,20 @@ import createElement from "./createElement.js";
 
 const createFormPerson = (i) => {
   const form = createElement('form', {
-    className: 'person'
-  })
+    className: 'person',
+  });
+
+  const title = createElement('h2', {
+    className: 'person__title',
+    textContent: `Пассажир #${i}`,
+  });
+
+  const fieldName = createElement('div', {
+    className: 'field',
+  });
+
+  form.append(title, fieldName)
+
 
   return form;
 };
