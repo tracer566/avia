@@ -7,15 +7,30 @@ const createFormPerson = (i) => {
 
   const title = createElement('h2', {
     className: 'person__title',
-    textContent: `Пассажир #${i}`,
+    textContent: `Пассажир #${i + 1}`,
   });
 
   const fieldName = createElement('div', {
     className: 'field',
   });
 
-  form.append(title, fieldName)
+  const labelName = createElement('label', {
+    className: 'field__label',
+    textContent: 'ФИО',
+    for: `name${i}`,
+  });
 
+  const inputName = createElement('input', {
+    className: 'field__input',
+    id: `name${i}`,
+    name: 'name',
+    type: 'text',
+    placeholder: 'Введите ваше ФИО',
+    required: 'true',
+  });
+
+  fieldName.append(labelName, inputName)
+  form.append(title, fieldName)
 
   return form;
 };
