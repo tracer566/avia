@@ -1,10 +1,12 @@
 import start from './modules/start.js';
 import getFormsPerson from './modules/formsPerson.js';
+import readyPlane from './modules/readyPlane.js';
 
 const init = (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
 
   // вернул стартом main и firstForm
+  // start(app, title);
   const { main, firstForm } = start(app, title);
 
   firstForm.addEventListener('submit', (e) => {
@@ -13,7 +15,10 @@ const init = (selectorApp, title) => {
 
     const forms = getFormsPerson(firstForm.count.value);
     firstForm.remove();
-    main.append(...forms)
+    main.append(...forms);
+
+    // вызываю самолет
+    readyPlane(forms, main);
   });
 
 

@@ -59,7 +59,6 @@ const createFormPerson = (i) => {
   fieldName.append(labelName, inputName)
   fieldTicket.append(labelTicket, inputTicket)
 
-
   form.append(title, fieldName, fieldTicket, button)
 
   return form;
