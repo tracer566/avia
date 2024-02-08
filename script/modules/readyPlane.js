@@ -1,3 +1,5 @@
+import airplane from "./airplane.js";
+
 const readyPlane = (forms, main) => {
   const data = [];
 
@@ -17,14 +19,18 @@ const readyPlane = (forms, main) => {
         ticket: form.ticket.value
       });
 
-      // перебрать массив и объект
-      data.forEach(elem => {
-        // перебор объекта
-        for (let key in data[elem]) {
-          alert(data[elem][key])
-        }
-      });
+      // перебрать массив и объект с данными из форм
+      // data.forEach(elem => {
+      //   // перебор объекта
+      //   for (let key in data[elem]) {
+      //     alert(data[elem][key])
+      //   }
+      // });
 
+      if (forms.length === data.length) {
+        forms.forEach(form => form.remove());
+        airplane(main, data);
+      };
 
     });
 
