@@ -29,7 +29,7 @@ const readyPlane = (forms, main) => {
 
       if (forms.length === data.length) {
         forms.forEach(form => form.remove());
-        airplane(main, data);
+        airplane(main, data, forms.length);
       };
 
     });

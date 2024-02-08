@@ -5,10 +5,12 @@ const createBlockSeat = (n, count) => {
   // буквы колонок
   const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
+  // обертка для мест в самолете
   const fuselage = createElement('ol', {
     className: 'fuselage',
   });
 
+  // создаю места самолета
   for (let i = n; i < count + n; i++) {
     // создаю ряды
     const wrapperRowLi = createElement('li');
@@ -18,7 +20,7 @@ const createBlockSeat = (n, count) => {
     });
 
     // создаю колонки и кресла
-    const columns = letters.map(letter => {
+    const columnsSeats = letters.map(letter => {
       const columnLi = createElement('li', {
         className: 'seat',
       });
@@ -35,11 +37,8 @@ const createBlockSeat = (n, count) => {
       return columnLi;
     });
 
-
-    // вставляю колонки в обертку ol 
-    seatRowOl.append(...columns);
-
-
+    // вставляю колонки c сиденьями в обертку ol 
+    seatRowOl.append(...columnsSeats);
     // вставляю списки для колонок в ряды
     wrapperRowLi.append(seatRowOl);
 
@@ -120,8 +119,16 @@ const createAirplane = (title, scheme) => {
 
 };
 
-const airplane = (main, data) => {
-  const title = 'Выберите 1 место';
+const airplane = (main, data, persons) => {
+  let title = 'Выберите места';
+  if (persons == 1) {
+    title = 'Выберите 1 место';
+  } else if (persons > 1 && persons < 5) {
+    title = `Выберите ${persons} места`;
+  } else {
+    title = `Выберите ${persons} мест`;
+  }
+
   const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
 
   main.append(createAirplane(title, scheme))
