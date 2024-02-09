@@ -21,15 +21,37 @@ const createMain = () => {
   return main;
 };
 
-// создание перво формы
-const createFirstForm = () => {
+// создание первой формы
+const createFirstForm = (data) => {
   const form = createElement('form', {
     className: 'field',
   });
+
+  const labelTour = createElement('label', {
+    className: 'field__label',
+    for: 'tour',
+    textContent: 'Выбрать тур из списка',
+  });
+
   const label = createElement('label', {
     className: 'field__label',
     textContent: 'Укажите количество человек (макс: 6)',
   });
+
+  const select = createElement('select', {
+    className: 'field__select',
+    id: 'tour',
+    name: 'tour',
+  });
+
+  const options = data.map((elem) => {
+    return createElement('option', {
+      value: elem.id,
+      textContent: elem.tour
+    })
+  });
+
+  select.append(...options)
 
   const input = createElement('input', {
     className: 'field__input',
@@ -48,15 +70,15 @@ const createFirstForm = () => {
     textContent: 'Подтвердить'
   });
 
-  form.append(label, input, button)
+  form.append(labelTour, select, label, input, button)
 
   return form;
 };
 
-const start = (app, title) => {
+const start = (app, title, data) => {
   const h1 = createTitle(title);
   const main = createMain();
-  const firstForm = createFirstForm();
+  const firstForm = createFirstForm(data);
 
   main.append(firstForm);
   app.append(h1, main);

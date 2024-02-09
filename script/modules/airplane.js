@@ -1,4 +1,6 @@
 import createElement from "./createElement.js";
+import declOfNum from "./declOfNum.js";
+
 
 // создает ряды с сиденьями самолета
 const createBlockSeat = (n, count) => {
@@ -120,14 +122,18 @@ const createAirplane = (title, scheme) => {
 };
 
 const airplane = (main, data, persons) => {
-  let title = 'Выберите места';
-  if (persons == 1) {
-    title = 'Выберите 1 место';
-  } else if (persons > 1 && persons < 5) {
-    title = `Выберите ${persons} места`;
-  } else {
-    title = `Выберите ${persons} мест`;
-  }
+  /* 1 вариант склонения */
+  // let title = 'Выберите места';
+  // if (persons == 1) {
+  //   title = 'Выберите 1 место';
+  // } else if (persons > 1 && persons < 5) {
+  //   title = `Выберите ${persons} места`;
+  // } else {
+  //   title = `Выберите ${persons} мест`;
+  // }
+
+  /* 2-ой вариант склонения */
+  let title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])}`
 
   const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
 
