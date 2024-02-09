@@ -56,10 +56,10 @@ const createFormPerson = (i) => {
     textContent: 'Подтвердить',
   })
 
-  fieldName.append(labelName, inputName)
-  fieldTicket.append(labelTicket, inputTicket)
+  fieldName.append(labelName, inputName);
+  fieldTicket.append(labelTicket, inputTicket);
 
-  form.append(title, fieldName, fieldTicket, button)
+  form.append(title, fieldName, fieldTicket, button);
 
   return form;
 };
@@ -69,7 +69,7 @@ const getFormsPerson = (count) => {
   const forms = [];
   if (count > 6) count = 6;
   for (let i = 0; i < count; i++) {
-    forms.push(createFormPerson(i))
+    forms.push(createFormPerson(i));
   }
 
   return forms;

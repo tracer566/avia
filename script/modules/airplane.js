@@ -137,7 +137,7 @@ const airplane = (main, data, persons) => {
 
   const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
 
-  main.append(createAirplane(title, scheme))
+  main.append(createAirplane(title, scheme));
 };
 
 export default airplane;

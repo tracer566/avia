@@ -4,7 +4,7 @@ import createElement from "./createElement.js";
 const createTitle = (title) => {
   const h1 = createElement('h1', {
     className: 'title',
-    textContent: title
+    textContent: title,
   });
   // h1.className = 'title';
   // h1.textContent = title;
@@ -47,11 +47,11 @@ const createFirstForm = (data) => {
   const options = data.map((elem) => {
     return createElement('option', {
       value: elem.id,
-      textContent: elem.tour
-    })
+      textContent: elem.tour,
+    });
   });
 
-  select.append(...options)
+  select.append(...options);
 
   const input = createElement('input', {
     className: 'field__input',
@@ -67,10 +67,10 @@ const createFirstForm = (data) => {
   const button = createElement('button', {
     className: 'btn-confirm',
     type: 'submit',
-    textContent: 'Подтвердить'
+    textContent: 'Подтвердить',
   });
 
-  form.append(labelTour, select, label, input, button)
+  form.append(labelTour, select, label, input, button);
 
   return form;
 };

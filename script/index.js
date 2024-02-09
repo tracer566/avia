@@ -1,13 +1,13 @@
 import start from './modules/start.js';
 import getFormsPerson from './modules/formsPerson.js';
 import readyPlane from './modules/readyPlane.js';
-import getData from './service/getTour.js'
+import getData from './service/getTour.js';
 
 const init = async (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
   // получаю данные и отправляю их по нужным функциям
   const data = await getData();
-  console.log('data: ', data);
+  // console.log('data: ', data);
 
   // вернул стартом main и firstForm
   // start(app, title);
@@ -24,7 +24,6 @@ const init = async (selectorApp, title) => {
     // вызываю самолет
     readyPlane(forms, main);
   });
-
 
 };
 
