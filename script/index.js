@@ -11,7 +11,7 @@ const init = async (selectorApp, title) => {
 
   // вернул стартом main и firstForm
   // start(app, title);
-  const { main, firstForm } = start(app, title, data);
+  const { main, firstForm, h1 } = start(app, title, data);
 
   firstForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -21,8 +21,14 @@ const init = async (selectorApp, title) => {
     firstForm.remove();
     main.append(...forms);
 
+    /* обращение к option через select
+    console.log(firstForm.tour.value)-вернет число из value*/
+    const tourData = data.find((tour) => tour.id === firstForm.tour.value);
+    h1.textContent = `${tourData.tour}`;
+
+
     // вызываю самолет
-    readyPlane(forms, main);
+    readyPlane(forms, main, tourData);
   });
 
 };

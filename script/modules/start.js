@@ -85,7 +85,8 @@ const start = (app, title, data) => {
 
   return {
     main,
-    firstForm
+    firstForm,
+    h1
   };
 
 };

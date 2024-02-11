@@ -1,5 +1,6 @@
 import createElement from "./createElement.js";
 import declOfNum from "./declOfNum.js";
+import checkSeat from "./checkSeat.js";
 
 
 // создает ряды с сиденьями самолета
@@ -112,7 +113,6 @@ const createAirplane = (title, scheme) => {
 
   });
 
-
   // вставляю нос в fieldset
   plane.append(cockpit, ...elements);
   // вставляю fielset в форму
@@ -121,23 +121,31 @@ const createAirplane = (title, scheme) => {
 
 };
 
-const airplane = (main, data, persons) => {
+const airplane = (main, data, tourData) => {
   /* 1 вариант склонения */
   // let title = 'Выберите места';
-  // if (persons == 1) {
+  // if (data.length == 1) {
   //   title = 'Выберите 1 место';
-  // } else if (persons > 1 && persons < 5) {
-  //   title = `Выберите ${persons} места`;
+  // } else if (data.length > 1 && data.length < 5) {
+  //   title = `Выберите ${data.length} места`;
   // } else {
-  //   title = `Выберите ${persons} мест`;
+  //   title = `Выберите ${data.length} мест`;
   // }
 
   /* 2-ой вариант склонения */
   let title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])}`
 
-  const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
+  // const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
+  const scheme = tourData.scheme;
+  console.log('tourData.scheme', tourData.scheme);
 
-  main.append(createAirplane(title, scheme));
+  // choisesForm === choisesSeat
+  const choisesForm = createAirplane(title, scheme);
+
+  // проверяет сколько мест можно забронировать
+  checkSeat(choisesForm, data);
+
+  main.append(choisesForm);
 };
 
 export default airplane;
