@@ -115,13 +115,13 @@ const createAirplane = (title, scheme) => {
 
   // вставляю нос в fieldset
   plane.append(cockpit, ...elements);
-  // вставляю fielset в форму
+  // вставляю fieldset в форму
   choisesSeat.append(plane);
   return choisesSeat;
 
 };
 
-const airplane = (main, data, tourData) => {
+const airplane = (main, data, tourData, h1) => {
   /* 1 вариант склонения */
   // let title = 'Выберите места';
   // if (data.length == 1) {
@@ -143,7 +143,7 @@ const airplane = (main, data, tourData) => {
   const choisesForm = createAirplane(title, scheme);
 
   // проверяет сколько мест можно забронировать
-  checkSeat(choisesForm, data);
+  checkSeat(choisesForm, data, h1);
 
   main.append(choisesForm);
 };

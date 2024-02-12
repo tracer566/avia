@@ -1,6 +1,6 @@
 import airplane from "./airplane.js";
 
-const readyPlane = (forms, main, tour) => {
+const readyPlane = (forms, main, tour, h1) => {
   // сюда добавляются данные с формы
   const data = [];
 
@@ -31,7 +31,7 @@ const readyPlane = (forms, main, tour) => {
       if (forms.length === data.length) {
         forms.forEach(form => form.remove());
         // data это данные с форм в виде массива с объектами
-        airplane(main, data, tour);
+        airplane(main, data, tour, h1);
       };
 
     });

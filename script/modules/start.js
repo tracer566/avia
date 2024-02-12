@@ -29,7 +29,7 @@ const createFirstForm = (data) => {
 
   const labelTour = createElement('label', {
     className: 'field__label',
-    for: 'tour',
+    htmlFor: 'tour',
     textContent: 'Выбрать тур из списка',
   });
 
@@ -90,6 +90,7 @@ const start = (app, title, data) => {
   };
 
 };
+
 
 export default start;
 

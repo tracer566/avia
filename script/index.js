@@ -3,6 +3,14 @@ import getFormsPerson from './modules/formsPerson.js';
 import readyPlane from './modules/readyPlane.js';
 import getData from './service/getTour.js';
 
+// убрать
+const test = () => {
+  const inp = document.querySelector('#count');
+  inp.addEventListener('change', (e) => {
+    console.log('e change: ', e);
+  });
+};
+
 const init = async (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
   // получаю данные и отправляю их по нужным функциям
@@ -12,6 +20,8 @@ const init = async (selectorApp, title) => {
   // вернул стартом main и firstForm
   // start(app, title);
   const { main, firstForm, h1 } = start(app, title, data);
+
+  test();//убрать
 
   firstForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -28,7 +38,8 @@ const init = async (selectorApp, title) => {
 
 
     // вызываю самолет
-    readyPlane(forms, main, tourData);
+    readyPlane(forms, main, tourData,h1);
+
   });
 
 };

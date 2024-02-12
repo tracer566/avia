@@ -17,7 +17,7 @@ const createFormPerson = (i) => {
   const labelName = createElement('label', {
     className: 'field__label',
     textContent: 'ФИО',
-    for: `name${i}`,
+    htmlFor: `name${i}`,
   });
 
   const inputName = createElement('input', {
@@ -36,7 +36,7 @@ const createFormPerson = (i) => {
   const labelTicket = createElement('label', {
     className: 'field__label',
     textContent: 'Номер билета (10 цифр)',
-    for: `ticket${i}`,
+    htmlFor: `ticket${i}`,
   });
 
   const inputTicket = createElement('input', {
