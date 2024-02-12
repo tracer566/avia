@@ -35,7 +35,7 @@ const createFirstForm = (data) => {
 
   const label = createElement('label', {
     className: 'field__label',
-    textContent: 'Укажите количество человек (макс: 6)',
+    innerHTML: 'Укажите количество человек <span class="label-span">(максимум: 6)</span>',
   });
 
   const select = createElement('select', {

@@ -25,25 +25,19 @@ const checkSeat = (form, data, h1) => {
       const formData = new FormData(form);
       // бронь
       const booking = [...formData].map(([, value]) => {
-        return value
+        return value;
       });
-
 
       for (let i = 0; i < data.length; i++) {
         data[i].seat = booking[i];
         if (i == data.length - 1) {
           form.remove();
-          alert(`Спасибо!Хорошего полёта, ваши места ${[...booking]}`);
+          alert(`Спасибо! Хорошего полёта, ваши места ${[...booking]}`);
           h1.textContent = 'Счастливого пути!';
-
-        }
+        };
       }
-
-
       console.log('checkSeat data5555 бронь: ', data);
-
     });
-
   });
 };
 

@@ -57,6 +57,7 @@ input:invalid:focus {
   flex-basis: 100%;
   text-align: center;
   margin-bottom: 30px;
+  padding-top: 40px;
 }
 
 .choises-seat {
@@ -70,6 +71,10 @@ input:invalid:focus {
   max-width: 300px;
   padding: 0;
   border: none;
+}
+
+.label-span {
+  display: block;
 }
 
 .cockpit {
