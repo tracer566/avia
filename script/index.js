@@ -2,6 +2,7 @@ import start from './modules/start.js';
 import getFormsPerson from './modules/formsPerson.js';
 import readyPlane from './modules/readyPlane.js';
 import getData from './service/getTour.js';
+import changeTourBg from './modules/changeBg.js'
 
 // убрать
 const test = () => {
@@ -36,9 +37,12 @@ const init = async (selectorApp, title) => {
     const tourData = data.find((tour) => tour.id === firstForm.tour.value);
     h1.textContent = `${tourData.tour}`;
 
+    // смена фона под тур
+    changeTourBg(tourData);
+
 
     // вызываю самолет
-    readyPlane(forms, main, tourData,h1);
+    readyPlane(forms, main, tourData, h1);
 
   });
 

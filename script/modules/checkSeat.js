@@ -1,7 +1,7 @@
 import { setStorage, getStorage } from "../service/storage.js";
 
 // проверяет сколько мест можно забронировать
-const checkSeat = (form, data, h1) => {
+const checkSeat = (form, data, h1, tourId) => {
   console.log('checkSeat data5555: ', data);
   // console.log('checkSeat form5555: ', ...form);
   form.addEventListener('change', (e) => {
@@ -44,14 +44,14 @@ const checkSeat = (form, data, h1) => {
       // console.log('checkSeat data5555 бронь: ', data);
 
       // отправляю данные в localstorage
-      setStorage(data);
+      setStorage(tourId, data);
 
       form.remove();
       document.body.innerHTML = `
       <h1 class="title">Спасибо за бронь на моем сервисе.Хорошего полета!</h1>
       <h2 class="title">${booking.length === 1
-          ? `Ваше место ${booking}`
-          : `Ваши места ${booking}`}</h2>
+          ? `Ваше место: ${booking}`
+          : `Ваши места: ${booking}`}</h2>
       `
     });
   });

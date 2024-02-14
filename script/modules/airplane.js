@@ -137,15 +137,16 @@ const airplane = (main, data, tourData, h1) => {
 
   // const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
   const scheme = tourData.scheme;
-  console.log('tourData.scheme', tourData.scheme);
+  console.log('tourData from airplane: ', tourData);
+  console.log('tourData.scheme from airplane', tourData.scheme);
 
   // choisesForm === choisesSeat
   const choisesForm = createAirplane(title, scheme);
 
   // проверяет сколько мест можно забронировать
-  checkSeat(choisesForm, data, h1);
+  checkSeat(choisesForm, data, h1, tourData.id);
 
   main.append(choisesForm);
-}; 
+};
 
 export default airplane;
