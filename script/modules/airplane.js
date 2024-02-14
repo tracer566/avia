@@ -70,7 +70,7 @@ const createCockpit = (title) => {
 
   const cockpitTitle = createElement('h1', {
     className: 'cockpit-title',
-    textContent: title,
+    innerHTML: title,
   });
 
   const cockpitConfirm = createElement('button', {
@@ -146,6 +146,6 @@ const airplane = (main, data, tourData, h1) => {
   checkSeat(choisesForm, data, h1);
 
   main.append(choisesForm);
-};
+}; 
 
 export default airplane;
