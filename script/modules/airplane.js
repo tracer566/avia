@@ -5,7 +5,7 @@ import { getStorage } from "../service/storage.js";
 
 
 // создает ряды с сиденьями самолета
-const createBlockSeat = (n, count, boockingSeat) => {
+const createBlockSeat = (n, count, boockingSeat, id) => {
   // буквы колонок
   const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
@@ -23,10 +23,15 @@ const createBlockSeat = (n, count, boockingSeat) => {
       className: 'seats',
     });
 
+    // переменнная смены цвета кресел в зависимости от id тура
+    let colorSeat = id == 1 || id == 3 || id == 5
+      ? 'seat color'
+      : 'seat';
+
     // создаю колонки и кресла
     const columnsSeats = letters.map(letter => {
       const columnLi = createElement('li', {
-        className: 'seat',
+        className: colorSeat,
       });
 
       const wrapperSeat = createElement('label');
@@ -68,7 +73,7 @@ const createExit = () => {
 };
 
 // создаю нос самолета
-const createCockpit = (title) => {
+const createCockpit = (title, id) => {
   const cockpit = createElement('div', {
     className: 'cockpit',
   });
@@ -78,8 +83,13 @@ const createCockpit = (title) => {
     innerHTML: title,
   });
 
+  // переменнная смены цвета кнопки в зависимости от id тура
+  let colorBtn = id == 1 || id == 3 || id == 5
+    ? 'cockpit-confirm2'
+    : 'cockpit-confirm';
+
   const cockpitConfirm = createElement('button', {
-    className: 'cockpit-confirm',
+    className: colorBtn,
     type: 'submit',
     textContent: 'Подтвердить'
   });
@@ -92,10 +102,11 @@ const createCockpit = (title) => {
 // создаю самолет
 const createAirplane = (title, tourData) => {
   const scheme = tourData.scheme;
+  const id = tourData.id;
   // забронированные места
   const boockingSeat = getStorage(tourData.id).map(item => item.seat);
 
-  console.log('boockingSeat: ', boockingSeat);
+  // console.log('boockingSeat: ', boockingSeat);
 
   const choisesSeat = createElement('form', {
     className: 'choises-seat',
@@ -107,7 +118,7 @@ const createAirplane = (title, tourData) => {
   });
 
   // нос самолета
-  const cockpit = createCockpit(title);
+  const cockpit = createCockpit(title, id);
 
   let n = 1;
   // корпус
@@ -117,7 +128,7 @@ const createAirplane = (title, tourData) => {
     };
 
     if (typeof type === 'number') {
-      const blockSeats = createBlockSeat(n, type, boockingSeat);
+      const blockSeats = createBlockSeat(n, type, boockingSeat, id);
       n = n + type;
       return blockSeats;
     };

@@ -115,6 +115,43 @@ input:invalid:focus {
   cursor: pointer;
 }
 
+.cockpit-confirm2 {
+  align-self: flex-end;
+  position: relative;
+  z-index: 3;
+  background-color: #f3bc08;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  border: none;
+  padding: 12px 25px;
+  border: 2px solid #afafaf;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color .3s ease, box-shadow .3s ease, border .3s ease;
+  box-shadow: 0px 0px 2px inset #000
+}
+
+.cockpit-confirm2:hover {
+  background-color: #eeba10;
+  box-shadow: 0px 0px 3px inset #000;
+}
+
+.cockpit-confirm2:active {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid #ee7410;
+  color: #000;
+
+}
+
+.cockpit-confirm2:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid #ee7410;
+  color: #000;
+  outline: none;
+
+}
+
 .cockpit:before {
   content: "";
   display: block;
@@ -257,6 +294,10 @@ ol {
   border-radius: 5px;
   animation-duration: 300ms;
   animation-fill-mode: both;
+}
+
+.color input[type=checkbox]:before {
+  background: #e79a52;
 }
 
 .seat input[type=checkbox]:checked:before {
