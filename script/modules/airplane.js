@@ -1,6 +1,7 @@
 import createElement from "./createElement.js";
 import declOfNum from "./declOfNum.js";
 import checkSeat from "./checkSeat.js";
+import { getStorage } from "../service/storage.js";
 
 
 // создает ряды с сиденьями самолета
@@ -85,7 +86,12 @@ const createCockpit = (title) => {
 };
 
 // создаю самолет
-const createAirplane = (title, scheme) => {
+const createAirplane = (title, tourData) => {
+  const scheme = tourData.scheme;
+  // забронированные места
+  const boockingSeat = getStorage(tourData.id);
+  console.log('boockingSeat: ', boockingSeat);
+
   const choisesSeat = createElement('form', {
     className: 'choises-seat',
   });
@@ -136,12 +142,11 @@ const airplane = (main, data, tourData, h1) => {
   let title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])}`
 
   // const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
-  const scheme = tourData.scheme;
+
   console.log('tourData from airplane: ', tourData);
-  console.log('tourData.scheme from airplane', tourData.scheme);
 
   // choisesForm === choisesSeat
-  const choisesForm = createAirplane(title, scheme);
+  const choisesForm = createAirplane(title, tourData);
 
   // проверяет сколько мест можно забронировать
   checkSeat(choisesForm, data, h1, tourData.id);
