@@ -5,7 +5,7 @@ import { getStorage } from "../service/storage.js";
 
 
 // создает ряды с сиденьями самолета
-const createBlockSeat = (n, count) => {
+const createBlockSeat = (n, count, boockingSeat) => {
   // буквы колонок
   const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
@@ -30,10 +30,14 @@ const createBlockSeat = (n, count) => {
       });
 
       const wrapperSeat = createElement('label');
+
+      const checkSeat = `${i + letter}`
+
       const seat = createElement('input', {
         name: 'seat',
         type: 'checkbox',
-        value: `${i + letter}`,
+        value: checkSeat,
+        disabled: boockingSeat.includes(checkSeat)
       });
 
       wrapperSeat.append(seat);
@@ -89,7 +93,8 @@ const createCockpit = (title) => {
 const createAirplane = (title, tourData) => {
   const scheme = tourData.scheme;
   // забронированные места
-  const boockingSeat = getStorage(tourData.id);
+  const boockingSeat = getStorage(tourData.id).map(item => item.seat);
+
   console.log('boockingSeat: ', boockingSeat);
 
   const choisesSeat = createElement('form', {
@@ -112,7 +117,7 @@ const createAirplane = (title, tourData) => {
     };
 
     if (typeof type === 'number') {
-      const blockSeats = createBlockSeat(n, type);
+      const blockSeats = createBlockSeat(n, type, boockingSeat);
       n = n + type;
       return blockSeats;
     };
