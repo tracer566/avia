@@ -14,7 +14,7 @@ const changeTourBg = (tourData) => {
         bg = "url('img/mob/egypt-mob.jpg')";
         break;
       case 4:
-        bg = "url('img/mob/turke-moby.jpg')";
+        bg = "url('img/mob/turkey-mob.jpg')";
         break;
       case 5:
         bg = "url('img/mob/sochi-mob.jpg')";
