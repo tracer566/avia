@@ -15,6 +15,7 @@ const checkSeat = (form, data, h1, tourId) => {
       return value
     });
 
+    const bookingSeat = getStorage(tourId).map(item => item.seat);
     // заблокирует остальные места,когда пассажиры займут свои
     if (checked.length === data.length) {
       [...form].forEach((elemFrom) => {
@@ -22,7 +23,13 @@ const checkSeat = (form, data, h1, tourId) => {
           elemFrom.disabled = true;
         };
       });
-    };
+    } else {
+      [...form].forEach((elemFrom) => {
+        if (!bookingSeat.includes(elemFrom.value)) {
+          elemFrom.disabled = false;
+        };
+      });
+    }
 
     // отправка формы после выбора мест
     form.addEventListener('submit', e => {
