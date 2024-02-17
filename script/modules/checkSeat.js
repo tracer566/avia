@@ -4,6 +4,7 @@ import { setStorage, getStorage } from "../service/storage.js";
 const checkSeat = (form, data, h1, tourId) => {
   console.log('checkSeat data5555: ', data);
   // console.log('checkSeat form5555: ', ...form);
+  //form это самолет
   form.addEventListener('change', (e) => {
     console.log('change', e);
     // соберет все поля с value
@@ -14,6 +15,8 @@ const checkSeat = (form, data, h1, tourId) => {
     const checked = [...formData].map(([, value]) => {
       return value
     });
+    // проверяет что по креслу кликнули,и разблокирует кнопку
+    form.send.disabled = checked.length !== data.length;
 
     const bookingSeat = getStorage(tourId).map(item => item.seat);
     // заблокирует остальные места,когда пассажиры займут свои
@@ -25,7 +28,7 @@ const checkSeat = (form, data, h1, tourId) => {
       });
     } else {
       [...form].forEach((elemFrom) => {
-        if (!bookingSeat.includes(elemFrom.value)) {
+        if (!bookingSeat.includes(elemFrom.value) && elemFrom.name === 'seat') {
           elemFrom.disabled = false;
         };
       });

@@ -91,7 +91,9 @@ const createCockpit = (title, id) => {
   const cockpitConfirm = createElement('button', {
     className: colorBtn,
     type: 'submit',
-    textContent: 'Подтвердить'
+    textContent: 'Подтвердить',
+    name: 'send',
+    disabled: true,
   });
 
   cockpit.append(cockpitTitle, cockpitConfirm);

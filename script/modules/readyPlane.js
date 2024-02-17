@@ -31,7 +31,7 @@ const readyPlane = (forms, main, tour, h1) => {
       //   }
       // });
 
-      if (forms.length === data.length) {
+      if (forms.length === dataForm.length) {
         forms.forEach(form => form.remove());
         // data это данные с форм в виде массива с объектами
         airplane(main, dataForm, tour, h1);
