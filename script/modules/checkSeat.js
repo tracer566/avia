@@ -32,7 +32,7 @@ const checkSeat = (form, data, h1, tourId) => {
           elemFrom.disabled = false;
         };
       });
-    }
+    };
 
     // отправка формы после выбора мест
     form.addEventListener('submit', e => {
